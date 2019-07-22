@@ -1,0 +1,131 @@
+@import url(https://fonts.google.com/specimen/Roboto);
+@import url(https://fonts.google.com/specimen/Oleo+Script);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+
+@mixin size($w,$h:$w,$m:null){
+  width: $w;
+  height: $h;
+  @if($m){
+    margin: $m;
+  }
+}
+
+@mixin setAuto($w, $m:auto){
+  width: $w;
+  margin: $m;
+}
+
+@mixin setBg($color){
+
+  background-color: $color;
+}
+
+@mixin setBorder($w, $c){
+  border: $w solid $c;
+}
+
+@mixin brdRad($tl, $tr:$tl, $br:$tl, $bl:$tl){
+	border-top-left-radius: $tl;
+	border-top-right-radius: $tr;
+	border-bottom-right-radius: $br;
+	border-bottom-left-radius: $bl;
+}
+
+@mixin setPosAbs($top:0, $right:0, $bottom:null, $left:0, $zindex:0){
+
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $zindex;
+}
+
+body,html {
+  @include size(100%);
+  font-family:'Oleo Script' ,'roboto' ,'Avenir', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+ul,li,ol {
+  list-style: none;
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+
+#main {
+  @include setBg(#0a141d);
+  display: flex;
+  flex-wrap: wrap;
+}
+.temporarily-container , .finshed-container{
+  display: inline-block;
+  width: 50%;
+  .temporarily, .finshed {
+    display: inline-block;
+    border: 3px solid #ffad50;
+    border-radius: 8px;
+    margin: 16px;
+    @include size(155px, 205px);
+  }
+}
+.card { 
+  cursor: pointer;
+  @include size(150px, 200px);
+  @include setBorder(1px,#000);
+  @include brdRad(8px);
+  @include setBg(#fff);
+  position: relative;
+  
+  display: inline-block;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 32px;
+
+  &::before {
+    content: attr(data-kind);
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  &::after {
+    content: attr(data-kind);
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+  .rank {
+    @include setPosAbs(50%,null,null,50%,2);
+    transform: translate(-50%,-50%);
+    
+
+  }
+  &.spades , &.plum  {
+    color: black;
+  }
+  &.diamond , &.heart{
+    color: red;
+  }
+}
+.gamming-container {
+  width: 100%;
+  margin: 16px;
+  .card-row {
+    display: flex;
+    flex-direction: column;
+    .card{
+      +.card {
+        top: -150px;
+      }
+    }
+  }
+}

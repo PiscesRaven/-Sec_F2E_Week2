@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>W2_solitaire</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="main">
+    <div class="temporarily-container">
+      <div class="temporarily"></div>
+      <div class="temporarily"></div>
+      <div class="temporarily"></div>
+      <div class="temporarily"></div>
+    </div>
+    <div class="finshed-container">
+      <div class="finshed"></div>
+      <div class="finshed"></div>
+      <div class="finshed"></div>
+      <div class="finshed"></div>
+    </div>
+    <div class="gamming-container">
+      <div class="card-row" v-for="blcok in gamming">
+        <div class="card" v-for="card in blcok" :class="suitColor[card.suit]" :data-kind="card.suit">
+          <div class="rank">
+            {{card.rank}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="card" v-for="card in cardList" :key="card.suit + card.rank" :class="suitColor[card.suit]"
+      :data-kind="card.suit">
+      <div class="rank">
+        {{card.rank}}
+      </div>
+    </div> -->
+  </div>
+</body>
+
+</html>
+<script src="./js/main.js"></script>
