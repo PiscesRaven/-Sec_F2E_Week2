@@ -51,14 +51,32 @@ new Vue({
     randonCard() {
       for (let i = this.cardList.length - 1; i > 0; i--) {
         let randomIndex = Math.floor(Math.random() * i);
+        console.log(Math.floor(Math.random() * i))
 
         let temp = this.cardList[i];
-        this.gamming[1].push(temp)
+        this.initGamming(this.cardList[randomIndex])
         Vue.set(this.cardList, i, this.cardList[randomIndex]);
         Vue.set(this.cardList, randomIndex, temp);
       }
 
       this.isDeckShuffled = true;
+    },
+    initGamming(card) {
+      for (let i = 0; i < this.gamming.length; i++) {
+        let slotCapacity;
+
+        if (i <= 3) {
+          slotCapacity = 7;
+          if (this.gamming[i].length <= slotCapacity) {
+            this.gamming[i].push(card)
+          }
+        } else {
+          slotCapacity = 6;
+          if (this.gamming[i].length <= slotCapacity) {
+            this.gamming[i].push(card)
+          }
+        }
+      }
     }
   },
   created() {

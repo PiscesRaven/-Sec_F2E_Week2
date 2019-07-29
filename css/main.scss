@@ -65,11 +65,11 @@ img {
 #main {
   @include setBg(#0a141d);
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .temporarily-container , .finshed-container{
-  display: inline-block;
-  width: 50%;
+  display: flex;
   .temporarily, .finshed {
     display: inline-block;
     border: 3px solid #ffad50;
@@ -106,8 +106,20 @@ img {
   .rank {
     @include setPosAbs(50%,null,null,50%,2);
     transform: translate(-50%,-50%);
-    
-
+    &::before {
+      content: attr(data-rank);
+      position: absolute;
+      top: 75px;
+      right: 55px;
+    font-size: 28px;
+    }
+    &::after {
+      content: attr(data-rank);
+      position: absolute;
+      bottom: 75px;
+      left: 55px;
+      font-size: 28px;
+    }
   }
   &.spades , &.plum  {
     color: black;
@@ -117,11 +129,12 @@ img {
   }
 }
 .gamming-container {
-  width: 100%;
-  margin: 16px;
+  display: flex;
+  width: 1496px;
   .card-row {
     display: flex;
     flex-direction: column;
+    margin: 16px auto;
     .card{
       +.card {
         top: -150px;

@@ -27,19 +27,14 @@
     </div>
     <div class="gamming-container">
       <div class="card-row" v-for="blcok in gamming">
-        <div class="card" v-for="card in blcok" :class="suitColor[card.suit]" :data-kind="card.suit">
-          <div class="rank">
+        <div class="card" v-for="(card, index) in blcok" :class="suitColor[card.suit]" :data-kind="card.suit"
+          :key="index" :style="{top: -160 * index + 'px' , zIndex: index}">
+          <div class="rank" :data-rank="card.rank">
             {{card.rank}}
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="card" v-for="card in cardList" :key="card.suit + card.rank" :class="suitColor[card.suit]"
-      :data-kind="card.suit">
-      <div class="rank">
-        {{card.rank}}
-      </div>
-    </div> -->
   </div>
 </body>
 

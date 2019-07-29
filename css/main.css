@@ -28,13 +28,17 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
 .temporarily-container, .finshed-container {
-  display: inline-block;
-  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .temporarily-container .temporarily, .temporarily-container .finshed, .finshed-container .temporarily, .finshed-container .finshed {
@@ -86,6 +90,22 @@ img {
           transform: translate(-50%, -50%);
 }
 
+.card .rank::before {
+  content: attr(data-rank);
+  position: absolute;
+  top: 75px;
+  right: 55px;
+  font-size: 28px;
+}
+
+.card .rank::after {
+  content: attr(data-rank);
+  position: absolute;
+  bottom: 75px;
+  left: 55px;
+  font-size: 28px;
+}
+
 .card.spades, .card.plum {
   color: black;
 }
@@ -95,8 +115,10 @@ img {
 }
 
 .gamming-container {
-  width: 100%;
-  margin: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 1496px;
 }
 
 .gamming-container .card-row {
@@ -107,6 +129,7 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin: 16px auto;
 }
 
 .gamming-container .card-row .card + .card {
